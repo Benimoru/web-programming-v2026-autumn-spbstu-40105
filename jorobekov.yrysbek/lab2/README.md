@@ -59,3 +59,7 @@
 lab2/
 в”њв”Ђв”Ђ README.md
 в””в”Ђв”Ђ solution.js
+
+## Запуск
+
+Открыть файл solution.js в проекте и выполнить функцию toAbbreviation(value) в среде JavaScript.
