@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+    <title>Программисты</title>
+
+    <link
+        rel="stylesheet"
+        href="./styles.css"
+    >
+</head>
+
+<body>
+
+<header>
+    <h1>Коллекция программистов</h1>
+
+    <p>
+        Лабораторная работа 4 — вариант 17
+    </p>
+</header>
+
+<main>
+
+    <section class="forms">
+
+        <div class="form-card">
+
+            <h2>Добавить программиста</h2>
+
+            <form id="programmer-form">
+
+                <label for="programmer-id">
+                    ID
+                </label>
+
+                <input
+                    id="programmer-id"
+                    type="number"
+                    min="1"
+                    required
+                >
+
+                <label for="programmer-name">
+                    Имя
+                </label>
+
+                <input
+                    id="programmer-name"
+                    type="text"
+                    required
+                >
+
+                <button type="submit">
+                    Добавить программиста
+                </button>
+
+            </form>
+
+        </div>
+
+
+        <div class="form-card">
+
+            <h2>Добавить язык</h2>
+
+            <form id="language-form">
+
+                <label for="programmer-select">
+                    Программист
+                </label>
+
+                <select id="programmer-select"></select>
+
+                <label for="language">
+                    Язык программирования
+                </label>
+
+                <input
+                    id="language"
+                    type="text"
+                    required
+                >
+
+                <button type="submit">
+                    Добавить язык
+                </button>
+
+            </form>
+
+        </div>
+
+
+        <div class="form-card">
+
+            <h2>Поиск по языку</h2>
+
+            <label for="search-language">
+                Язык программирования
+            </label>
+
+            <input
+                id="search-language"
+                type="text"
+                placeholder="Например, JavaScript"
+            >
+
+            <button id="search-button">
+                Найти
+            </button>
+
+            <button
+                id="show-all-button"
+                class="secondary-button"
+            >
+                Показать всех
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <section>
+
+        <h2>Программисты</h2>
+
+        <div
+            id="programmers"
+            class="programmers"
+        ></div>
+
+    </section>
+
+
+    <section
+        id="statistics"
+        class="statistics"
+    ></section>
+
+</main>
+
+<script
+    type="module"
+    src="./main.js"
+></script>
+
+</body>
+</html>
