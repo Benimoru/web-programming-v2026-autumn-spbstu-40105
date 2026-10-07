@@ -1,7 +1,7 @@
 import {
   Programmer,
   groupProgrammersByLanguage,
-  getAllLanguages,
+  getUniqueLanguages,
   getProgrammersByLanguage,
   groupByLanguageCount,
   getProgrammersWithMaxLanguages,
@@ -124,7 +124,7 @@ function updateSelect() {
 }
 
 function updateStatistics() {
-  const languages = getAllLanguages(programmers);
+  const languages = getUniqueLanguages(programmers);
   const byLanguage = groupProgrammersByLanguage(programmers);
   const byCount = groupByLanguageCount(programmers);
 

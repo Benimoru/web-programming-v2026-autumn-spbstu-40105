@@ -42,7 +42,7 @@ export function groupProgrammersByLanguage(programmers) {
   return result;
 }
 
-export function getAllLanguages(programmers) {
+export function getUniqueLanguages(programmers) {
   const languages = new Set();
 
   programmers.forEach((programmer) => {
