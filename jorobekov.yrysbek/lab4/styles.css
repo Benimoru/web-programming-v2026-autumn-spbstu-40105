@@ -173,7 +173,6 @@ button:hover {
   .programmers {
     grid-template-columns: repeat(2, 1fr);
   }
-
 }
 
 @media (width <= 600px) {
@@ -188,5 +187,4 @@ button:hover {
   header {
     padding: 20px 10px;
   }
-
 }
