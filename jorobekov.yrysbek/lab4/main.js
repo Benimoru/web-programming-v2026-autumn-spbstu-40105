@@ -2,7 +2,7 @@ import {
   Programmer,
   groupProgrammersByLanguage,
   getUniqueLanguages,
-  getProgrammersByLanguage,
+  findProgrammersByLanguage,
   groupByLanguageCount,
   getProgrammersWithMaxLanguages,
 } from './model.js';
@@ -311,7 +311,7 @@ document.querySelector('#search-button').addEventListener('click', () => {
     return;
   }
 
-  const result = getProgrammersByLanguage(programmers, language);
+  const result = findProgrammersByLanguage(programmers, language);
 
   entityList.innerHTML = '';
 

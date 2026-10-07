@@ -54,7 +54,7 @@ export function getUniqueLanguages(programmers) {
   return languages;
 }
 
-export function getProgrammersByLanguage(programmers, language) {
+export function findProgrammersByLanguage(programmers, language) {
   return programmers.filter((programmer) =>
     programmer.languages.includes(language),
   );
