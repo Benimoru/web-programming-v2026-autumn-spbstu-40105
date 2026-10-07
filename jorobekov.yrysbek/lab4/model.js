@@ -89,3 +89,5 @@ export function getProgrammersWithMaxLanguages(programmers) {
     (programmer) => programmer.languageCount === maxCount,
   );
 }
+
+export const findTopPolyglots = getProgrammersWithMaxLanguages;

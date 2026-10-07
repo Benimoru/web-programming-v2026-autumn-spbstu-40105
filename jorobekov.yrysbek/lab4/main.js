@@ -201,7 +201,9 @@ programmerForm.addEventListener('submit', async (event) => {
   }
 
   if (programmers.some((programmer) => programmer.id === id)) {
-    alert('РџСЂРѕРіСЂР°РјРјРёСЃС‚ СЃ С‚Р°РєРёРј ID СѓР¶Рµ СЃСѓС‰РµСЃС‚РІСѓРµС‚');
+    alert(
+      'РџСЂРѕРіСЂР°РјРјРёСЃС‚ СЃ С‚Р°РєРёРј ID СѓР¶Рµ СЃСѓС‰РµСЃС‚РІСѓРµС‚',
+    );
     return;
   }
 
@@ -252,7 +254,9 @@ entityList.addEventListener('click', async (event) => {
   const id = Number(button.dataset.id);
 
   if (button.classList.contains('add-language-button')) {
-    const language = prompt('Р’РІРµРґРёС‚Рµ СЏР·С‹Рє РїСЂРѕРіСЂР°РјРјРёСЂРѕРІР°РЅРёСЏ:');
+    const language = prompt(
+      'Р’РІРµРґРёС‚Рµ СЏР·С‹Рє РїСЂРѕРіСЂР°РјРјРёСЂРѕРІР°РЅРёСЏ:',
+    );
 
     if (!language) {
       return;
