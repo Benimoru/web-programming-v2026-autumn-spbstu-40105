@@ -1,9 +1,9 @@
-import {
+﻿import {
   Programmer,
   groupProgrammersByLanguage,
   getUniqueLanguages,
   findProgrammersByLanguage,
-  groupByLanguageCount,
+  groupProgrammersByLanguageCount,
   getProgrammersWithMaxLanguages,
 } from './model.js';
 
@@ -69,16 +69,16 @@ function render() {
             </p>
 
             <p>
-                <strong>Языки:</strong>
+                <strong>РЇР·С‹РєРё:</strong>
                 ${
                   programmer.languages.length > 0
                     ? programmer.languages.map(escapeHtml).join(', ')
-                    : 'Нет языков'
+                    : 'РќРµС‚ СЏР·С‹РєРѕРІ'
                 }
             </p>
 
             <p>
-                <strong>Количество языков:</strong>
+                <strong>РљРѕР»РёС‡РµСЃС‚РІРѕ СЏР·С‹РєРѕРІ:</strong>
                 ${programmer.languageCount}
             </p>
 
@@ -86,19 +86,19 @@ function render() {
                 type="button"
                 class="add-language-button"
                 data-id="${programmer.id}">
-                Добавить язык
+                Р”РѕР±Р°РІРёС‚СЊ СЏР·С‹Рє
             </button>
 
             <button
                 type="button"
                 class="remove-language-button"
                 data-id="${programmer.id}">
-                Удалить язык
+                РЈРґР°Р»РёС‚СЊ СЏР·С‹Рє
             </button>
 
             <button
                 type="button"
-                class="delete-button" data-testid="delete-button"
+                class="delete-button" data-testid="delete-entity"
                 data-id="${programmer.id}">
                 Удалить программиста
             </button>
@@ -127,29 +127,29 @@ function updateSelect() {
 function updateStatistics() {
   const languages = getUniqueLanguages(programmers);
   const byLanguage = groupProgrammersByLanguage(programmers);
-  const byCount = groupByLanguageCount(programmers);
+  const byCount = groupProgrammersByLanguageCount(programmers);
 
   const maxProgrammers = getProgrammersWithMaxLanguages(programmers);
 
   let html = `
-        <h2>Статистика</h2>
+        <h2>РЎС‚Р°С‚РёСЃС‚РёРєР°</h2>
 
         <p>
-            <strong>Всего программистов:</strong>
+            <strong>Р’СЃРµРіРѕ РїСЂРѕРіСЂР°РјРјРёСЃС‚РѕРІ:</strong>
             ${programmers.length}
         </p>
 
         <p>
-            <strong>Уникальные языки:</strong>
+            <strong>РЈРЅРёРєР°Р»СЊРЅС‹Рµ СЏР·С‹РєРё:</strong>
             ${languages.size}
         </p>
 
         <p>
-            <strong>Языки:</strong>
-            ${Array.from(languages).join(', ') || 'нет'}
+            <strong>РЇР·С‹РєРё:</strong>
+            ${Array.from(languages).join(', ') || 'РЅРµС‚'}
         </p>
 
-        <h3>Группировка по языкам</h3>
+        <h3>Р“СЂСѓРїРїРёСЂРѕРІРєР° РїРѕ СЏР·С‹РєР°Рј</h3>
     `;
 
   byLanguage.forEach((items, language) => {
@@ -162,7 +162,7 @@ function updateStatistics() {
   });
 
   html += `
-        <h3>Группировка по количеству языков</h3>
+        <h3>Р“СЂСѓРїРїРёСЂРѕРІРєР° РїРѕ РєРѕР»РёС‡РµСЃС‚РІСѓ СЏР·С‹РєРѕРІ</h3>
     `;
 
   byCount.forEach((items, count) => {
@@ -175,12 +175,12 @@ function updateStatistics() {
   });
 
   html += `
-        <h3>Максимальное количество языков</h3>
+        <h3>РњР°РєСЃРёРјР°Р»СЊРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ СЏР·С‹РєРѕРІ</h3>
 
         <p>
             ${
               maxProgrammers.map((item) => escapeHtml(item.name)).join(', ') ||
-              'нет'
+              'РЅРµС‚'
             }
         </p>
     `;
@@ -201,7 +201,7 @@ programmerForm.addEventListener('submit', async (event) => {
   }
 
   if (programmers.some((programmer) => programmer.id === id)) {
-    alert('Программист с таким ID уже существует');
+    alert('РџСЂРѕРіСЂР°РјРјРёСЃС‚ СЃ С‚Р°РєРёРј ID СѓР¶Рµ СЃСѓС‰РµСЃС‚РІСѓРµС‚');
     return;
   }
 
@@ -252,7 +252,7 @@ entityList.addEventListener('click', async (event) => {
   const id = Number(button.dataset.id);
 
   if (button.classList.contains('add-language-button')) {
-    const language = prompt('Введите язык программирования:');
+    const language = prompt('Р’РІРµРґРёС‚Рµ СЏР·С‹Рє РїСЂРѕРіСЂР°РјРјРёСЂРѕРІР°РЅРёСЏ:');
 
     if (!language) {
       return;
@@ -278,7 +278,7 @@ entityList.addEventListener('click', async (event) => {
     }
 
     const language = prompt(
-      `Введите язык для удаления:\n${programmer.languages.join(', ')}`,
+      `Р’РІРµРґРёС‚Рµ СЏР·С‹Рє РґР»СЏ СѓРґР°Р»РµРЅРёСЏ:\n${programmer.languages.join(', ')}`,
     );
 
     if (!language) {
@@ -331,12 +331,12 @@ document.querySelector('#search-button').addEventListener('click', () => {
                 </p>
 
                 <p>
-                    Языки:
+                    РЇР·С‹РєРё:
                     ${programmer.languages.map(escapeHtml).join(', ')}
                 </p>
 
                 <p>
-                    Количество языков:
+                    РљРѕР»РёС‡РµСЃС‚РІРѕ СЏР·С‹РєРѕРІ:
                     ${programmer.languageCount}
                 </p>
             `;

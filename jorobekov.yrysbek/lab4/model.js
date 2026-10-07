@@ -60,7 +60,7 @@ export function findProgrammersByLanguage(programmers, language) {
   );
 }
 
-export function groupByLanguageCount(programmers) {
+export function groupProgrammersByLanguageCount(programmers) {
   const result = new Map();
 
   programmers.forEach((programmer) => {
