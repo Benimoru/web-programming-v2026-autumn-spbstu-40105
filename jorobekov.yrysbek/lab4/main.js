@@ -57,6 +57,7 @@ function render() {
     const card = document.createElement('article');
 
     card.className = 'programmer-card';
+    card.dataset.testid = 'entity-card';
     card.dataset.id = programmer.id;
 
     card.innerHTML = `
@@ -97,7 +98,7 @@ function render() {
 
             <button
                 type="button"
-                class="delete-button"
+                class="delete-button" data-testid="delete-button"
                 data-id="${programmer.id}">
                 Удалить программиста
             </button>
@@ -318,6 +319,7 @@ document.querySelector('#search-button').addEventListener('click', () => {
     const card = document.createElement('article');
 
     card.className = 'programmer-card';
+    card.dataset.testid = 'entity-card';
 
     card.innerHTML = `
                 <h3>
