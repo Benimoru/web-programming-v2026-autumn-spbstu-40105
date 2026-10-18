@@ -1,28 +1,99 @@
 import React, {useEffect, useMemo, useState} from 'react';
 import {createRoot} from 'react-dom/client';
-import {
-  Plus,
-  Search,
-  MoreHorizontal,
-  Pencil,
-  Trash2,
-  X,
-  Check,
-  CalendarDays,
-  Circle,
-  Clock3,
-  CheckCircle2,
-  LayoutGrid,
-  GripVertical,
-} from 'lucide-react';
 import './styles.css';
+
+const Icon = ({name, size = 16}) => {
+  const paths = {
+    Plus: <path d="M12 5v14M5 12h14" />,
+    Search: (
+      <>
+        <circle cx="11" cy="11" r="7" />
+        <path d="m20 20-4-4" />
+      </>
+    ),
+    MoreHorizontal: (
+      <>
+        <circle cx="5" cy="12" r="1" />
+        <circle cx="12" cy="12" r="1" />
+        <circle cx="19" cy="12" r="1" />
+      </>
+    ),
+    Pencil: (
+      <>
+        <path d="m16 4 4 4L9 19l-5 1 1-5Z" />
+        <path d="m14 6 4 4" />
+      </>
+    ),
+    Trash2: (
+      <>
+        <path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6" />
+        <path d="M10 11v5M14 11v5" />
+      </>
+    ),
+    X: <path d="m18 6-12 12M6 6l12 12" />,
+    Check: <path d="m5 12 4 4L19 6" />,
+    CalendarDays: (
+      <>
+        <rect x="3" y="5" width="18" height="16" rx="2" />
+        <path d="M16 3v4M8 3v4M3 11h18" />
+      </>
+    ),
+    Circle: <circle cx="12" cy="12" r="9" />,
+    Clock3: (
+      <>
+        <circle cx="12" cy="12" r="9" />
+        <path d="M12 7v5l4 2" />
+      </>
+    ),
+    CheckCircle2: (
+      <>
+        <circle cx="12" cy="12" r="9" />
+        <path d="m8 12 3 3 5-6" />
+      </>
+    ),
+    LayoutGrid: (
+      <>
+        <rect x="3" y="3" width="8" height="8" rx="1" />
+        <rect x="13" y="3" width="8" height="8" rx="1" />
+        <rect x="3" y="13" width="8" height="8" rx="1" />
+        <rect x="13" y="13" width="8" height="8" rx="1" />
+      </>
+    ),
+    GripVertical: (
+      <>
+        <circle cx="9" cy="5" r="1" />
+        <circle cx="15" cy="5" r="1" />
+        <circle cx="9" cy="12" r="1" />
+        <circle cx="15" cy="12" r="1" />
+        <circle cx="9" cy="19" r="1" />
+        <circle cx="15" cy="19" r="1" />
+      </>
+    ),
+  };
+
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      {paths[name]}
+    </svg>
+  );
+};
 
 const STORAGE_KEY = 'lab5-kanban-board-v1';
 
 const initialColumns = [
-  {id: 'todo', title: 'Сделать', color: '#64748b', icon: Circle},
-  {id: 'progress', title: 'В процессе', color: '#e59b32', icon: Clock3},
-  {id: 'done', title: 'Готово', color: '#239b72', icon: CheckCircle2},
+  {id: 'todo', title: 'Сделать', color: '#64748b', icon: 'Circle'},
+  {id: 'progress', title: 'В процессе', color: '#e59b32', icon: 'Clock3'},
+  {id: 'done', title: 'Готово', color: '#239b72', icon: 'CheckCircle2'},
 ];
 
 const initialTasks = [
@@ -132,7 +203,7 @@ function TaskModal({task, initialStatus = 'todo', onClose, onSave}) {
             onClick={onClose}
             aria-label="Закрыть"
           >
-            <X size={19} />
+            <Icon name="X" size={19} />
           </button>
         </div>
 
@@ -207,7 +278,8 @@ function TaskModal({task, initialStatus = 'todo', onClose, onSave}) {
             Отмена
           </button>
           <button type="submit" className="button button-primary">
-            <Check size={16} /> {task ? 'Сохранить' : 'Создать задачу'}
+            <Icon name="Check" size={16} />{' '}
+            {task ? 'Сохранить' : 'Создать задачу'}
           </button>
         </div>
       </form>
@@ -243,7 +315,7 @@ function TaskCard({task, onEdit, onDelete, onDragStart, onDragEnd}) {
             aria-label="Действия с карточкой"
             onClick={() => setMenuOpen((open) => !open)}
           >
-            <MoreHorizontal size={19} />
+            <Icon name="MoreHorizontal" size={19} />
           </button>
           {menuOpen && (
             <div className="card-menu">
@@ -254,7 +326,7 @@ function TaskCard({task, onEdit, onDelete, onDragStart, onDragEnd}) {
                   onEdit(task);
                 }}
               >
-                <Pencil size={14} /> Редактировать
+                <Icon name="Pencil" size={14} /> Редактировать
               </button>
               <button
                 className="danger-action"
@@ -264,7 +336,7 @@ function TaskCard({task, onEdit, onDelete, onDragStart, onDragEnd}) {
                   onDelete(task);
                 }}
               >
-                <Trash2 size={14} /> Удалить
+                <Icon name="Trash2" size={14} /> Удалить
               </button>
             </div>
           )}
@@ -276,11 +348,12 @@ function TaskCard({task, onEdit, onDelete, onDragStart, onDragEnd}) {
       )}
       <div className="card-footer">
         <span className="task-id">
-          <GripVertical size={14} /> {task.id.slice(-6).toUpperCase()}
+          <Icon name="GripVertical" size={14} />{' '}
+          {task.id.slice(-6).toUpperCase()}
         </span>
         {task.dueDate && (
           <span className="due-date">
-            <CalendarDays size={13} />
+            <Icon name="CalendarDays" size={13} />
             {formatDate(task.dueDate)}
           </span>
         )}
@@ -391,21 +464,21 @@ function App() {
             className="button button-primary create-main"
             onClick={() => startCreate('todo')}
           >
-            <Plus size={17} /> Новая задача
+            <Icon name="Plus" size={17} /> Новая задача
           </button>
         </section>
 
         <section className="board-toolbar">
           <div className="board-tabs">
             <button className="tab active">
-              <LayoutGrid size={15} /> Доска
+              <Icon name="LayoutGrid" size={15} /> Доска
             </button>
             <span className="tab-divider" />
             <span className="task-total">{tasks.length} задач</span>
           </div>
           <div className="toolbar-right">
             <label className="search-box">
-              <Search size={16} />
+              <Icon name="Search" size={16} />
               <input
                 value={search}
                 onChange={(event) => setSearch(event.target.value)}
@@ -418,10 +491,10 @@ function App() {
 
         <section className="board" aria-label="Канбан-доска">
           {initialColumns.map((column) => {
-            const ColumnIcon = column.icon;
             const columnTasks = filteredTasks.filter(
               (task) => task.status === column.id,
             );
+
             return (
               <section
                 className={`board-column ${dragOverColumn === column.id ? 'drag-over' : ''}`}
@@ -440,7 +513,7 @@ function App() {
                 <div className="column-heading">
                   <div className="column-title-wrap">
                     <span className="column-icon" style={{color: column.color}}>
-                      <ColumnIcon size={17} />
+                      <Icon name={column.icon} size={17} />
                     </span>
                     <h2>{column.title}</h2>
                     <span className="column-count">{columnTasks.length}</span>
@@ -450,7 +523,7 @@ function App() {
                     aria-label={`Добавить задачу: ${column.title}`}
                     onClick={() => startCreate(column.id)}
                   >
-                    <Plus size={18} />
+                    <Icon name="Plus" size={18} />
                   </button>
                 </div>
                 <div className="column-cards">
@@ -470,7 +543,7 @@ function App() {
                   {columnTasks.length === 0 && (
                     <div className="empty-column">
                       <span>
-                        <Plus size={17} />
+                        <Icon name="Plus" size={17} />
                       </span>
                       <p>
                         {search
@@ -483,7 +556,7 @@ function App() {
                     className="add-card-button"
                     onClick={() => startCreate(column.id)}
                   >
-                    <Plus size={16} /> Добавить карточку
+                    <Icon name="Plus" size={16} /> Добавить карточку
                   </button>
                 </div>
               </section>
@@ -515,7 +588,7 @@ function App() {
       )}
       {toast && (
         <div className="toast">
-          <CheckCircle2 size={17} />
+          <Icon name="CheckCircle2" size={17} />
           {toast}
         </div>
       )}
