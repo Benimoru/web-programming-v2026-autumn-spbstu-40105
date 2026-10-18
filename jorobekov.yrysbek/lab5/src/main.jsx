@@ -298,6 +298,7 @@ function TaskCard({task, onEdit, onDelete, onDragStart, onDragEnd}) {
 
   return (
     <article
+      data-testid="kanban-card"
       className="task-card"
       draggable
       onDragStart={(event) => onDragStart(event, task)}
@@ -498,7 +499,8 @@ function App() {
             return (
               <section
                 className={`board-column ${dragOverColumn === column.id ? 'drag-over' : ''}`}
-                data-testid={`kanban-${column.id}`}
+                data-testid="kanban-column"
+                data-column-id={column.id}
                 key={column.id}
                 onDragOver={(event) => {
                   event.preventDefault();
