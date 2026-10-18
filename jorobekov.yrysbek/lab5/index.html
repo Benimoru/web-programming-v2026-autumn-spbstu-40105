@@ -1,73 +1,13 @@
-```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Органайзер заметок</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <header class="header">
-        <h1>Мои заметки</h1>
-        <p>Организуй свои идеи в одном месте</p>
-    </header>
-
-    <main class="container">
-        <section class="editor">
-            <h2 id="form-title">Новая заметка</h2>
-
-            <form id="note-form">
-                <input type="hidden" id="note-id">
-
-                <label for="note-title">Заголовок</label>
-                <input id="note-title" type="text" maxlength="100"
-                       placeholder="Название заметки" required>
-
-                <label for="note-content">Содержание</label>
-                <textarea id="note-content" rows="5"
-                          placeholder="Напиши свою заметку..." required></textarea>
-
-                <label for="note-tags">Теги через запятую</label>
-                <input id="note-tags" type="text"
-                       placeholder="Учёба, Идеи, Работа">
-
-                <div class="form-buttons">
-                    <button type="submit" id="save-button">Сохранить</button>
-                    <button type="button" id="cancel-button" hidden>Отмена</button>
-                </div>
-            </form>
-        </section>
-
-        <section class="notes-section">
-            <h2>Мои записи</h2>
-
-            <input id="search-input" type="search"
-                   placeholder="Поиск по заголовку и содержанию">
-
-            <div class="filters">
-                <select id="tag-filter">
-                    <option value="">Все теги</option>
-                </select>
-
-                <label for="date-filter">Созданы после:</label>
-                <input id="date-filter" type="date">
-
-                <button type="button" id="reset-filters">Сбросить фильтры</button>
-            </div>
-
-            <div id="tag-list" class="tag-list"></div>
-            <p id="notes-count"></p>
-            <div id="notes-list" class="notes-list"></div>
-            <p id="empty-message">Заметок пока нет. Создай первую!</p>
-        </section>
-    </main>
-
-    <footer>
-        <p>Органайзер заметок · Лабораторная работа №5</p>
-    </footer>
-
-    <script type="module" src="/main.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f4f6fb" />
+    <title>Kanban Board — Лабораторная работа 5</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>
-```
