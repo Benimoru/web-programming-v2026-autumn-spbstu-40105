@@ -443,7 +443,7 @@ function App() {
   }
 
   return (
-    <div className="app-shell">
+    <div className="app-shell" data-testid="app">
       <main className="main-content">
         <header className="page-header">
           <h1>Канбан-доска</h1>
@@ -498,6 +498,7 @@ function App() {
             return (
               <section
                 className={`board-column ${dragOverColumn === column.id ? 'drag-over' : ''}`}
+                data-testid={`kanban-${column.id}`}
                 key={column.id}
                 onDragOver={(event) => {
                   event.preventDefault();
