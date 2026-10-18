@@ -529,7 +529,10 @@ function App() {
                     <Icon name="Plus" size={18} />
                   </button>
                 </div>
-                <div className="column-cards">
+                <div
+                  className="column-cards"
+                  data-testid={column.id === 'done' ? 'kanban-done' : undefined}
+                >
                   {columnTasks.map((task) => (
                     <TaskCard
                       key={task.id}
@@ -556,6 +559,7 @@ function App() {
                     </div>
                   )}
                   <button
+                    data-testid="kanban-add"
                     className="add-card-button"
                     onClick={() => startCreate(column.id)}
                   >
